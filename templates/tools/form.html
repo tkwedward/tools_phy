@@ -29,7 +29,7 @@
 {% csrf_token %}
 
 <div class="detail">
-    <input type="radio" name="order" value="normal"> normal<br>
+    <input type="radio" name="order" value="normal" checked> normal<br>
     <input type="radio" name="order" value="reverse"> reverse<br>
     <a href="{% url 'result' %}"> send </a>
 </div>
