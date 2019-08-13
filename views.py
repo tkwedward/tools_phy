@@ -10,8 +10,8 @@ def upload(request):
         file_upload = list(request.FILES.items())
         file_upload = file_upload[0][1]
         file_upload.name = "he.txt"
-        # print(type())
         request.session["file"] = str(file_upload.read())
+        request.session["order"] = request.POST['order']
         return render(request, 'tools/form.html', {'form': "123", })
     else:
         file_upload = ""
@@ -19,12 +19,17 @@ def upload(request):
 #
 def result(request):
     file_upload = request.session["file"]
+    order = request.session["order"]
     pattern = re.compile("\s+")
     file_upload = file_upload.split("\\r\\n")[10]
     text_extract = re.split("\s+", file_upload)
     # print(type(text_extract), len(text_extract))
     # print(type(file_upload[0]))
-    text_extract = "<br>".join(text_extract)
+    if order == 'reverse':
+        text_extract = text_extract[2:]
+        text_extract = "<br>".join(text_extract[::-1])
+    else:
+        text_extract = "<br>".join(text_extract[2:])
 
     return HttpResponse(text_extract)
     # if request.method == 'POST':
