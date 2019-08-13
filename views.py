@@ -17,7 +17,7 @@ def upload(request):
         file_upload = ""
         return render(request, 'tools/form.html', {'form': "123", })
 #
-def result(request):
+def result(request, order='order'):
     file_upload = request.session["file"]
     order = request.session["order"]
     pattern = re.compile("\s+")
@@ -25,8 +25,8 @@ def result(request):
     text_extract = re.split("\s+", file_upload)
     # print(type(text_extract), len(text_extract))
     # print(type(file_upload[0]))
+    text_extract = text_extract[2:]
     if order == 'reverse':
-        text_extract = text_extract[2:]
         text_extract = "<br>".join(text_extract[::-1])
     else:
         text_extract = "<br>".join(text_extract[2:])

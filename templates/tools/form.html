@@ -27,12 +27,24 @@
 
 <form action="{% url 'upload' %}" method="POST" class="dropzone" id="my-awesome-dropzone">
 {% csrf_token %}
-<input type="radio" name="order" value="normal"> normal<br>
-<input type="radio" name="order" value="reverse"> reverse<br>
+
+<div class="detail">
+    <input type="radio" name="order" value="normal"> normal<br>
+    <input type="radio" name="order" value="reverse"> reverse<br>
+    <a href="{% url 'result' %}"> send </a>
+</div>
 </form>
 
+<div>
 
-<a href="{% url 'result' %}"> send </a>
+</div>
+<style>
+.detail {
+  position: relative;
+  top:300px;
+
+}
+</style>
 
 <script>
 // Dropzone class:
