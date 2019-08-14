@@ -29,7 +29,7 @@ def result(request, order='order'):
     if order == 'reverse':
         text_extract = "<br>".join(text_extract[::-1])
     else:
-        text_extract = "<br>".join(text_extract[2:])
+        text_extract = "<br>".join(text_extract)
 
     return HttpResponse(text_extract)
     # if request.method == 'POST':
