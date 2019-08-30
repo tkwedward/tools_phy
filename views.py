@@ -12,20 +12,22 @@ def upload(request):
         file_upload.name = "he.txt"
         request.session["file"] = str(file_upload.read())
         request.session["order"] = request.POST['order']
+        request.session["dim"] = request.POST['dim']
         return render(request, 'tools/form.html', {'form': "123", })
     else:
         file_upload = ""
         return render(request, 'tools/form.html', {'form': "123", })
 #
-def result(request, order='order'):
+def result(request, order='order', dim=2):
     file_upload = request.session["file"]
     order = request.session["order"]
+    dim = int(request.session["dim"])
     pattern = re.compile("\s+")
     file_upload = file_upload.split("\\r\\n")[10]
     text_extract = re.split("\s+", file_upload)
     # print(type(text_extract), len(text_extract))
     # print(type(file_upload[0]))
-    text_extract = text_extract[2:]
+    text_extract = text_extract[dim:]
     if order == 'reverse':
         text_extract = "<br>".join(text_extract[::-1])
     else:

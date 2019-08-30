@@ -31,8 +31,11 @@
 <div class="detail">
     <input type="radio" name="order" value="normal" checked> normal<br>
     <input type="radio" name="order" value="reverse"> reverse<br>
-    <a href="{% url 'result' %}"> send </a>
+<div class="dimension">
+    <input type="radio" name="dim" value=2 checked> 2D<br>
+    <input type="radio" name="dim" value=1> 1D<br>
 </div>
+<a href="{% url 'result' %}"> send </a>
 </form>
 
 <div>
