@@ -28,12 +28,27 @@
 <form action="{% url 'upload' %}" method="POST" class="dropzone" id="my-awesome-dropzone">
 {% csrf_token %}
 
+
 <div class="detail">
-    <input type="radio" name="order" value="normal" checked> normal<br>
-    <input type="radio" name="order" value="reverse"> reverse<br>
+
+Order:
+<div class="order">
+    <input id="order_normal" type="radio" name="order" value="normal" checked>
+    <label for="order_normal">normal</label>
+     <br>
+    <input id="order_reverse" type="radio" name="order" value="reverse">
+    <label for="order_reverse">reverse</label>
+    <br>
+    <br>
+</div>
+Dimension:
 <div class="dimension">
-    <input type="radio" name="dim" value=2 checked> 2D<br>
-    <input type="radio" name="dim" value=1> 1D<br>
+    <input id="dim_2D" type="radio" name="dim" value=2 checked>
+    <label for="dim_2D">2D</label>
+    <br>
+    <input id="dim_1D" type="radio" name="dim" value=1>
+    <label for="dim_1D">1D</label>
+    <br>
 </div>
 <a href="{% url 'result' %}"> send </a>
 </form>
